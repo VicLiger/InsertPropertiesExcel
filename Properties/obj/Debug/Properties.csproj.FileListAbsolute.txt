@@ -1,0 +1,22 @@
+C:\Program Files\Autodesk\Navisworks Manage 2020\Plugins\Properties\Properties.dll
+C:\Program Files\Autodesk\Navisworks Manage 2020\Plugins\Properties\Properties.pdb
+D:\Victor\Properties\Properties\obj\Debug\Properties.csproj.AssemblyReference.cache
+D:\Victor\Properties\Properties\obj\Debug\Properties.csproj.ResolveComReference.cache
+D:\Victor\Properties\Properties\obj\Debug\Properties.csproj.CoreCompileInputs.cache
+D:\Victor\Properties\Properties\obj\Debug\Properties.csproj.CopyComplete
+D:\Victor\Properties\Properties\obj\Debug\Properties.dll
+D:\Victor\Properties\Properties\obj\Debug\Properties.pdb
+D:\Victor\Properties_Insertion\Properties\Properties\obj\Debug\Properties.csproj.AssemblyReference.cache
+D:\Victor\Properties_Insertion\Properties\Properties\obj\Debug\Properties.csproj.ResolveComReference.cache
+D:\Victor\Properties_Insertion\Properties\Properties\obj\Debug\Properties.csproj.CoreCompileInputs.cache
+D:\Victor\Properties_Insertion\Properties\Properties\obj\Debug\Properties.csproj.CopyComplete
+D:\Victor\Properties_Insertion\Properties\Properties\obj\Debug\Properties.dll
+D:\Victor\Properties_Insertion\Properties\Properties\obj\Debug\Properties.pdb
+C:\Program Files\Autodesk\Navisworks Manage 2020\Plugins\AColor\Properties.dll
+C:\Program Files\Autodesk\Navisworks Manage 2020\Plugins\AColor\Properties.pdb
+D:\Victor\Properties_Insertion\Properties\obj\Debug\Properties.csproj.AssemblyReference.cache
+D:\Victor\Properties_Insertion\Properties\obj\Debug\Properties.csproj.ResolveComReference.cache
+D:\Victor\Properties_Insertion\Properties\obj\Debug\Properties.csproj.CoreCompileInputs.cache
+D:\Victor\Properties_Insertion\Properties\obj\Debug\Properties.csproj.CopyComplete
+D:\Victor\Properties_Insertion\Properties\obj\Debug\Properties.dll
+D:\Victor\Properties_Insertion\Properties\obj\Debug\Properties.pdb
