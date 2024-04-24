@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\ProjetoInsertExcel"
+    "\\ProjetoInsertExcel",
+    "\\ProjetoInsertExcel\\Properties",
+    "\\ProjetoInsertExcel\\Properties\\Methods"
   ],
-  "SelectedNode": "\\ProjetoInsertExcel\\ProjetoInsertExcel.sln",
+  "SelectedNode": "\\ProjetoInsertExcel\\Properties\\Methods\\FindItem.cs",
   "PreviewInSolutionExplorer": false
 }

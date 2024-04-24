@@ -53,11 +53,6 @@ namespace Properties.Methods
                     string sheetName = excelWS.Name;
                     Excel.Range excelRange = excelWS.UsedRange;
 
-                    if(sheetName == "DTwin_Equipamento")
-                    {
-
-                    }
-
                     int rowCount = excelRange.Rows.Count;
                     int columnCount = excelRange.Columns.Count;
 

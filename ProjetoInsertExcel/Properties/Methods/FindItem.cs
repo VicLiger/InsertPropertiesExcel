@@ -41,7 +41,7 @@ namespace Properties.Methods
 
                 search.SearchConditions.Add(condition);
 
-                ModelItem itemMaquete = search.FindFirst(doc, false);
+                ModelItemCollection itemMaquete = search.FindAll(doc, false);
 
                 if (itemMaquete == null)
                 {
@@ -53,7 +53,7 @@ namespace Properties.Methods
 
                     searchTag.SearchConditions.Add(conditionTag);
 
-                    ModelItem itemMaqueteTag = searchTag.FindFirst(doc, false);
+                    ModelItemCollection itemMaqueteTag = search.FindAll(doc, false);
 
                     if (itemMaqueteTag != null)
                     {
@@ -65,13 +65,18 @@ namespace Properties.Methods
                             string categoria = itens.categoria;
                             Dictionary<string, string> properties = itens.properties;
 
-                            foreach (var prop in properties)
+                            foreach(ModelItem itemMT in itemMaqueteTag)
                             {
-                                PropertiesInsert.PropertyInsertion(categoria, prop.Key, prop.Value, itemMaqueteTag);
+                                foreach (var prop in properties)
+                                {
+                                    PropertiesInsert.PropertyInsertion(categoria, prop.Key, prop.Value, itemMT);
+                                }
+
+                                form.UpdateBarProgress();
+                                ItensTest.Add(itemMT.DisplayName);
+                                CountItensEncontrados++;
                             }
-                            form.UpdateBarProgress();
-                            ItensTest.Add(itemMaqueteTag.DisplayName);
-                            CountItensEncontrados++;
+                          
                         }
 
                     }
@@ -90,16 +95,18 @@ namespace Properties.Methods
                         string categoria = itens.categoria;
                         Dictionary<string, string> properties = itens.properties;
 
-                        foreach (var prop in properties)
+                        foreach(ModelItem itemM in itemMaquete)
                         {
-                            PropertiesInsert.PropertyInsertion(categoria, prop.Key, prop.Value, itemMaquete);
-                        }
-                        ItensTest.Add(itemMaquete.DisplayName);
-                        CountItensEncontrados++;
-                        form.UpdateBarProgress();
+                            foreach (var prop in properties)
+                            {
+                                PropertiesInsert.PropertyInsertion(categoria, prop.Key, prop.Value, itemM);
+                            }
+
+                            form.UpdateBarProgress();
+                            ItensTest.Add(itemM.DisplayName);
+                            CountItensEncontrados++;
+                        }  
                     }
-                    ItensTest.Add(itemMaquete.DisplayName);
-                    CountItensEncontrados++;
                 }
             }
             form.killForms();
