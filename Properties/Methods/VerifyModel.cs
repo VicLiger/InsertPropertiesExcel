@@ -19,7 +19,6 @@ namespace Properties.Methods
             if (doc.Models.Count == 0)
                  return false;
             
-
             return true;
         }
 

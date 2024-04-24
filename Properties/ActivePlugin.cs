@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using Autodesk.Navisworks.Api.Plugins;
 using Properties.Methods;
 
+
 namespace Properties
 {
     [PluginAttribute("addProperties",
@@ -21,8 +22,21 @@ namespace Properties
 
             if (TrueOrFalse)
             {
-                ReadExcel.readerExcel(@"D:\C.xlsx");
-                FindItem.AttItem();
+                Form2 form = new Form2(); // Forms do caminho do excel
+                form.ShowDialog();
+
+
+                Form4 form4 = new Form4(); // Forms da pasta pra onde vai o Json
+                form4.ShowDialog();
+
+
+                ReadExcel.readerExcel(form.fileName);
+
+                
+                string JsonPath = $@"{form4.fileName}";
+                JsonConvert json = new JsonConvert(ReadExcel.ListaItens, JsonPath);
+
+                FindItem.AttItem(ReadExcel.ListaItens);
             }
             return 0;
         }

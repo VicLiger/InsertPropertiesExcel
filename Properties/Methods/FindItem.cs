@@ -11,23 +11,25 @@ namespace Properties.Methods
 {
     static class FindItem
     {
-        public static void AttItem()
+
+        public static List<string> ItensEncontrados;
+        public static int CountItensEncontrados;
+        public static void AttItem(Dictionary<string, List<Item>> newItens)
         {
+
             int cont = 0;
-            List<Item> newItens = ReadExcel.Itens;
+            List<string> ItensTest = new List<string>();
             Document doc = Application.ActiveDocument;
             Model model = doc.Models[0];
             ModelItemCollection collection = new ModelItemCollection();
 
-            foreach(Item i in newItens)
-            {
-                string name = i.itemName;
-            }
 
             if (model != null)
                 collection.Add(model.RootItem);
 
             ModelItemEnumerableCollection collectionT = collection.Descendants;
+            Form1 form = new Form1();
+            form.Show();
 
             foreach (var item in newItens)
             {
@@ -35,23 +37,73 @@ namespace Properties.Methods
                 search.Selection.SelectAll();
 
                 SearchCondition condition = SearchCondition.HasPropertyByDisplayName("Item", "Name")
-                    .EqualValue(new VariantData(item.itemName));
+                    .EqualValue(new VariantData(item.Key));
 
                 search.SearchConditions.Add(condition);
 
                 ModelItem itemMaquete = search.FindFirst(doc, false);
 
-                if (itemMaquete != null)
+                if (itemMaquete == null)
                 {
-                    foreach (var kvp in item.properties)
-                    {
-                        string key = kvp.Key;
-                        string value = kvp.Value;
+                    Search searchTag = new Search();
+                    searchTag.Selection.SelectAll();
 
-                        PropertiesInsert.PropertyInsertion(item.categoria, key, value, itemMaquete);
+                    SearchCondition conditionTag = SearchCondition.HasPropertyByDisplayName("AutoCad", "Tag")
+                    .EqualValue(new VariantData(item.Key));
+
+                    searchTag.SearchConditions.Add(conditionTag);
+
+                    ModelItem itemMaqueteTag = searchTag.FindFirst(doc, false);
+
+                    if (itemMaqueteTag != null)
+                    {
+
+                        List<Item> listaDeItens = item.Value;
+
+                        foreach (var itens in listaDeItens)
+                        {
+                            string categoria = itens.categoria;
+                            Dictionary<string, string> properties = itens.properties;
+
+                            foreach (var prop in properties)
+                            {
+                                PropertiesInsert.PropertyInsertion(categoria, prop.Key, prop.Value, itemMaqueteTag);
+                            }
+                            form.UpdateBarProgress();
+                            ItensTest.Add(itemMaqueteTag.DisplayName);
+                            CountItensEncontrados++;
+                        }
+
                     }
+                    else
+                    {
+                        form.UpdateBarProgress();
+                    }
+
+                }
+                else
+                {
+                    List<Item> listaDeItens = item.Value;
+
+                    foreach (var itens in listaDeItens)
+                    {
+                        string categoria = itens.categoria;
+                        Dictionary<string, string> properties = itens.properties;
+
+                        foreach (var prop in properties)
+                        {
+                            PropertiesInsert.PropertyInsertion(categoria, prop.Key, prop.Value, itemMaquete);
+                        }
+                        ItensTest.Add(itemMaquete.DisplayName);
+                        CountItensEncontrados++;
+                        form.UpdateBarProgress();
+                    }
+                    ItensTest.Add(itemMaquete.DisplayName);
+                    CountItensEncontrados++;
                 }
             }
+            form.killForms();
+            ItensEncontrados = ItensTest;
         }
     }
 }

@@ -10,7 +10,6 @@ namespace Properties.Objects
     class Item
     {
         public string categoria;
-        public string itemName;
         public Dictionary<string, string> properties;
 
         public Item()
